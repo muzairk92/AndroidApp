@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#AA1f2937"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:elevation="8dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="#FFFFFFFF"
+        android:layoutAnimationCache="false"
+        android:layoutDirection="ltr"
+        android:transitionGroup="true"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/overlayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1f2937"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="App is blocked"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#6b7280"
+            android:text="This app is blocked to protect your focus."
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/overlayUnlockButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unlock temporarily"
+            android:backgroundTint="#4f46e5"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/overlayCloseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go back"
+            android:textColor="#4f46e5"
+            android:backgroundTint="#e0e7ff" />
+
+    </LinearLayout>
+</LinearLayout>
