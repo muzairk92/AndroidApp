@@ -143,12 +143,25 @@ public class AppBlockerModule extends ReactContextBaseJavaModule {
     if (instance == null) {
       return;
     }
-    WritableMap map = Arguments.createMap();
-    map.putString("packageName", packageName);
-    instance
-        .getReactApplicationContext()
-        .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit("AppBlockedEvent", map);
+
+    final ReactApplicationContext reactContext = instance.getReactApplicationContext();
+    if (!reactContext.hasActiveReactInstance() || !reactContext.hasActiveCatalystInstance()) {
+      return;
+    }
+
+    reactContext.runOnJSQueueThread(
+        () -> {
+          try {
+            WritableMap map = Arguments.createMap();
+            map.putString("packageName", packageName);
+            reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit("AppBlockedEvent", map);
+          } catch (RuntimeException exception) {
+            // The React runtime might still be warming up; ignore this event and rely on
+            // the stored lastBlockedPackage for later retrieval once JS is available.
+          }
+        });
   }
 
   @ReactMethod
